@@ -1,0 +1,61 @@
+/* 仅Derma案例及其作品预览，沿用现有奶油纸张、棕色及字体。 */
+.derma-case { color: #59483a; }
+.derma-heading { padding: 8px 0 24px; }
+.derma-heading small { color: #927d6b; font-size: 11px; }
+.derma-heading h3 { font-size: clamp(22px,3vw,29px); line-height: 1.5; margin: 12px 0; }
+.review-window-content .derma-case .derma-claim { font-size: 20px; line-height: 1.6; margin: 0; }
+.derma-case h4 { font-size: 15px; margin: 0 0 10px; }
+.review-window-content .derma-case p { font-size: 14px; line-height: 1.85; }
+.derma-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid #c8ad9166; }
+.derma-intro p { margin: 0; }
+.derma-strategy { padding: 16px 0 26px; }
+.derma-strategy h5 { font-size: 18px; margin: 12px 0 8px; line-height: 1.6; }
+.derma-strategy > p { margin: 0 0 20px; color: #796350; }
+.derma-strategy-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.derma-strategy-grid > div { border-top: 2px solid #c8ad91; padding-top: 12px; }
+.derma-strategy-grid span { font-size: 10px; color: #927d6b; margin-right: 8px; }
+.derma-strategy-grid strong { font-size: 14px; }
+.derma-strategy-grid p { margin: 8px 0 0; }
+.derma-result { margin-top: 28px; padding-top: 20px; border-top: 1px solid #c8ad9166; }
+.derma-result p { margin: 10px 0; }
+.derma-result > strong { display: block; font-size: 18px; line-height: 1.7; padding: 14px 0; }
+.epage-carousel { padding: 18px 0 0; }
+.epage-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.epage-toolbar h4 { margin: 0; }
+.epage-toolbar > span { font-size: 12px; color: #796350; }
+.epage-toolbar > div { display: flex; gap: 8px; }
+.epage-toolbar button { border: 1px solid #c8ad91; background: #f8f3e9; color: #59483a; width: 40px; height: 36px; font: inherit; cursor: pointer; }
+.epage-toolbar button:disabled { opacity: .35; cursor: default; }
+.review-window-content .epage-hint { color: #927d6b; font-size: 12px; margin: 0 0 12px; }
+.epage-viewport { height: clamp(350px,65dvh,580px); overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; touch-action: pan-y pinch-zoom; background: #fff; scrollbar-width: thin; }
+.epage-slide { max-width: 640px; margin: auto; animation: epage-enter .24s ease-out both; }
+.epage-open { cursor: zoom-in; position: relative; min-height: 350px; }
+.epage-open img, .epage-preview-scroll img { display: block; width: 100%; height: auto; object-fit: contain; }
+.epage-status { position: absolute; top: 28px; left: 0; width: 100%; text-align: center; color: #927d6b; font-size: 14px; }
+.epage-error { min-height: 350px; display: flex; flex-direction: column; gap: 14px; justify-content: center; align-items: center; padding: 24px; font-size: 14px; line-height: 1.8; color: #796350; }
+.epage-error button { background: #ead8c3; color: #59483a; border: 1px solid #b99a7b; padding: 8px 16px; font: inherit; cursor: pointer; }
+.epage-products { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; padding-top: 14px; }
+.epage-products button { font: inherit; font-size: 13px; line-height: 1.7; color: #796350; padding: 10px 4px; cursor: pointer; border: 0; border-bottom: 2px solid transparent; background: transparent; }
+.epage-products button[aria-pressed='true'] { color: #59483a; border-bottom-color: #59483a; background: #ead8c350; }
+.epage-preview-overlay { position: fixed; inset: 0; z-index: 30; background: #302821b3; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.epage-preview { width: min(1000px,100%); max-height: calc(100dvh - 36px); display: flex; flex-direction: column; background: #fff; color: #59483a; }
+.epage-preview header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; background: #f8f3e9; flex-shrink: 0; }
+.epage-preview header strong { font-size: 14px; line-height: 1.6; }
+.epage-preview header button { width: 36px; height: 34px; border: 1px solid #c8ad91; background: transparent; color: #59483a; cursor: pointer; font-size: 24px; }
+.epage-preview-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; position: relative; }
+.epage-preview-scroll img { max-width: 1000px; margin: auto; }
+.epage-preview button:focus-visible, .epage-preview-scroll:focus-visible { outline: 2px solid #927d6b; outline-offset: -3px; }
+@keyframes epage-enter { from { opacity: .6; transform: translateX(var(--slide-start)); } to { opacity: 1; transform: translateX(0); } }
+@media (max-width: 680px) {
+  .derma-intro, .derma-strategy-grid { grid-template-columns: 1fr; gap: 18px; }
+  .derma-heading h3 { font-size: 23px; }
+  .review-window-content .derma-case .derma-claim { font-size: 18px; }
+  .epage-toolbar { flex-wrap: wrap; }
+  .epage-toolbar h4 { flex: 1; }
+  .epage-products { gap: 2px; }
+  .epage-products button { font-size: 12px; }
+  .epage-preview-overlay { padding: 8px; }
+  .epage-preview { max-height: calc(100dvh - 16px); }
+  .epage-preview header { padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .epage-slide { animation: none; } }

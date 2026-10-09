@@ -1,0 +1,52 @@
+/* 仅第二个案例：复用现有纸张排版和预览组件，局部加入Proline蓝。 */
+.proline-case { --proline-blue: #244b88; }
+.proline-case .derma-heading small, .proline-case .derma-strategy h5 { color: var(--proline-blue); }
+.proline-case .derma-strategy-grid > div { border-top-color: #244b8840; }
+.proline-work-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.proline-work-heading small { display: block; font-size: 11px; color: #927d6b; margin-bottom: 8px; }
+.proline-work-heading h4 { margin: 0; font-size: 18px; line-height: 1.6; color: var(--proline-blue); }
+.proline-arrows { display: flex; gap: 8px; flex-shrink: 0; }
+.proline-arrows button { width: 40px; height: 36px; border: 1px solid #c8ad91; color: #59483a; background: #f8f3e9; font: inherit; cursor: pointer; }
+.proline-arrows button:disabled { opacity: .35; cursor: default; }
+.review-window-content .proline-gesture-note { margin: 10px 0 14px; font-size: 12px; color: #927d6b; }
+.proline-pair-area { background: #fff; padding: 16px; overflow: hidden; touch-action: pan-y pinch-zoom; }
+.proline-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; height: 480px; animation: epage-enter .24s ease-out both; }
+.proline-pair figure { margin: 0; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+.proline-pair figcaption { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; font-size: 13px; color: #59483a; line-height: 1.6; }
+.proline-pair figcaption small { color: #927d6b; font-size: 10px; }
+.proline-art { flex: 1; min-height: 0; position: relative; cursor: zoom-in; }
+.proline-art img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
+.proline-art .epage-error { min-height: 150px; height: 100%; }
+.proline-source { display: block; font-size: 10px; color: #927d6b; text-align: center; }
+.proline-position { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0; }
+.proline-position > span { font-size: 13px; color: var(--proline-blue); }
+.proline-position button { color: var(--proline-blue); background: #f8f3e9; border: 1px solid #c8ad91; padding: 8px 12px; cursor: pointer; font: inherit; font-size: 12px; }
+.proline-thumbnails { display: flex; gap: 10px; overflow-x: auto; padding: 6px 2px 12px; scrollbar-width: thin; }
+.proline-thumbnails button { flex: 0 0 86px; padding: 6px; background: #fff; border: 1px solid #d8c8b2; color: #796350; cursor: pointer; font: inherit; }
+.proline-thumbnails button[aria-pressed='true'] { border-color: var(--proline-blue); box-shadow: inset 0 -2px var(--proline-blue); }
+.proline-thumbnails img { display: block; height: 90px; width: 100%; object-fit: contain; }
+.proline-thumbnails span { display: block; margin-top: 6px; font-size: 11px; }
+.review-window-content .proline-reference-note { font-size: 12px; color: #927d6b; line-height: 1.8; margin: 6px 0 0; }
+.proline-feedback { position: relative; margin-top: 32px; background: #f8f3e9; border: 1px solid #d8c8b2; padding: 26px; box-shadow: 3px 4px 0 #59483a0d; }
+.proline-feedback::before { content: ''; position: absolute; right: 22px; top: -8px; width: 70px; height: 18px; background: #cdb29055; transform: rotate(-5deg); pointer-events: none; }
+.proline-feedback > small { color: #927d6b; font-size: 11px; }
+.proline-feedback blockquote { margin: 18px 0 12px; font-size: clamp(24px,3.2vw,32px); line-height: 1.6; color: var(--proline-blue); }
+.review-window-content .proline-feedback .proline-evidence-note { font-size: 12px; color: #927d6b; }
+.proline-feedback-images { display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 24px; padding-top: 14px; }
+.proline-feedback-images figure { margin: 0; }
+.proline-feedback-images button { display: block; width: 100%; padding: 0; background: none; border: 0; cursor: zoom-in; }
+.proline-feedback-images img { display: block; width: 100%; height: auto; max-height: 310px; object-fit: contain; }
+.proline-feedback-images figcaption { font-size: 11px; color: #927d6b; line-height: 1.8; margin-top: 10px; text-align: center; }
+@media (max-width: 680px) {
+  .proline-work-heading { gap: 8px; }
+  .proline-work-heading h4 { font-size: 16px; }
+  .proline-arrows button { width: 34px; }
+  .proline-pair-area { padding: 14px 10px; }
+  .proline-pair { height: 760px; grid-template-columns: 1fr; grid-template-rows: repeat(2,minmax(0,1fr)); gap: 20px; }
+  .proline-thumbnails button { flex-basis: 72px; }
+  .proline-thumbnails img { height: 76px; }
+  .proline-feedback { padding: 20px 16px; }
+  .proline-feedback-images { grid-template-columns: 1fr; gap: 20px; }
+  .proline-feedback-images img { max-height: 360px; }
+}
+@media (prefers-reduced-motion: reduce) { .proline-pair { animation: none; } }

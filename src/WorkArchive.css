@@ -1,0 +1,85 @@
+/* 仅01：参考档案袋构图；纸纹和文件夹以自制SVG/CSS实现。 */
+@font-face { font-family: 'Archive WenKai'; src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+.review-window.archive-window { width: min(1260px, 100%); }
+.archive-window .review-window-content { padding: 28px 34px 30px; background: #fff; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23342820' d='M39 0H100V100H63Z'/%3E%3C/svg%3E"); background-size: 100% 100%; background-attachment: local; position: relative; isolation: isolate; }
+
+.work-archive { --archive-ink: #292c25; color: var(--archive-ink); font-family: 'Archive WenKai', 'PingFang SC', sans-serif; max-width: 990px; margin: auto; }
+.archive-heading-strip { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 6px; color: #706359; font-size: 11px; letter-spacing: 1px; }
+.archive-heading-strip > span:last-child { color: #e5dacd; }
+/* 原图中的档案袋、纸张和绿色标签直接作为底图，文字仍为可选中的HTML。 */
+.archive-folder { position: relative; isolation: isolate; width: 100%; max-width: 960px; aspect-ratio: 1318 / 871; margin: 0 auto; }
+.archive-envelope { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.archive-cover-heading { position: absolute; z-index: 2; top: 21%; left: 14%; width: 72%; }
+.archive-cover-heading h2 { font-family: 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: clamp(26px,2.5vw,34px); line-height: 1.18; font-weight: 750; letter-spacing: -1px; margin: 0; }
+.archive-role-sticker { position: absolute; top: 8.8cqw; left: -2%; display: inline-block; color: #21271f; font-size: clamp(14px,1.55vw,18px); line-height: 1.45; transform: rotate(-7deg); white-space: nowrap; }
+.archive-folder { container-type: inline-size; }
+.archive-documents { position: absolute; left: 13.4%; top: 39.4%; width: 70.3%; height: 44.8%; z-index: 2; }
+.archive-overview { position: relative; padding: 2% 4.7%; height: 100%; }
+.archive-position { color: #6f6a61; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+.review-window-content .work-archive p { font-family: 'Archive WenKai', sans-serif; font-size: 16px; line-height: 1.75; color: #58564f; margin: 0; }
+.review-window-content .work-archive p + p { margin-top: 12px; }
+.archive-keywords { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2px 10px; margin-top: 12px; }
+.archive-duty { display: flex; align-items: center; gap: 8px; padding: 3px 0; border: 0; background: none; color: #55534b; text-align: left; font: inherit; cursor: pointer; transition: transform .25s, background .25s; }
+.archive-duty > span { font-size: 11px; color: #897f70; }
+.archive-duty strong { font-size: 14px; font-weight: 400; line-height: 1.5; }
+.archive-duty.is-selected { background: #dce3c9; transform: translateY(-2px); }
+.archive-continue { display: flex; align-items: center; gap: 8px; width: fit-content; margin: 18px 0 0; padding: 5px 8px; border: 0; background: #30312b; color: #f7f5ed; text-align: left; font: inherit; cursor: pointer; }
+.archive-continue strong { font-size: 13px; font-weight: 400; line-height: 1.5; }
+.work-archive button:focus-visible { outline: 2px solid #876348; outline-offset: 4px; }
+.work-archive.has-reveal [data-archive-reveal] { transition: opacity .5s ease, translate .5s cubic-bezier(.2,.7,.2,1); }
+.work-archive.has-reveal [data-archive-reveal]:not(.is-visible) { opacity: 0; translate: 0 12px; }
+.work-archive.has-reveal [data-archive-reveal].is-visible { opacity: 1; translate: 0 0; }
+@media (min-width: 901px) and (max-height: 800px) {
+  .archive-window .review-window-content { padding-top: 12px; padding-bottom: 12px; }
+  .archive-heading-strip { margin-bottom: 0; }
+  .archive-cover-heading h2 { font-size: 28px; }
+  .archive-position { margin-bottom: 12px; }
+  .review-window-content .work-archive p + p { margin-top: 12px; }
+  .archive-keywords { margin-top: 12px; gap: 2px 10px; }
+  .archive-continue { margin-top: 6px; }
+}
+@media (max-width: 900px) {
+  .archive-window .review-window-content { padding: 18px 12px 24px; }
+  .archive-heading-strip { margin-bottom: 8px; }
+  .archive-folder { aspect-ratio: auto; padding: 22% 13.4% 12%; }
+  .archive-envelope { object-fit: fill; }
+  .archive-cover-heading { position: relative; inset: auto; width: 100%; margin-bottom: 28px; }
+  .archive-cover-heading h2 { font-size: 28px; }
+  .archive-role-sticker { position: relative; top: auto; left: auto; margin: 18px 0 0 -8px; padding: 5px 10px; background: #dce3c9; font-size: 16px; box-shadow: 0 2px 2px #483b2520; }
+  .archive-documents { position: relative; inset: auto; width: 100%; height: auto; }
+  .archive-overview { padding: 22px; background: #f4f2e9; height: auto; box-shadow: 1px 3px 3px #382c2525; }
+}
+@media (max-width: 600px) {
+  .archive-heading-strip { font-size: 10px; }
+  .archive-heading-strip > span:last-child { display: none; }
+  .archive-folder { padding: 56% 10% 14%; }
+  .archive-cover-heading h2 { font-size: 23px; letter-spacing: -.5px; line-height: 1.4; }
+  .archive-role-sticker { font-size: 13px; padding-inline: 7px; }
+  .archive-overview { padding: 20px 15px; }
+  .archive-position { font-size: 13px; }
+  .archive-keywords { grid-template-columns: 1fr; gap: 5px; }
+  .archive-duty { gap: 8px; }
+  .archive-duty strong { font-size: 14px; }
+  .archive-continue strong { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-archive.has-reveal [data-archive-reveal], .archive-duty { transition: none; }
+  .work-archive.has-reveal [data-archive-reveal]:not(.is-visible) { opacity: 1; translate: none; }
+  .archive-duty.is-selected { transform: none; }
+}
+/* 01保留窗口控制，缩短工具栏，为档案袋留出完整画面。 */
+@media (min-width: 901px) {
+  .review-window.archive-window { max-height: calc(100dvh - 20px); }
+  .archive-window .review-window-bar { padding: 6px 14px; }
+  .archive-window .review-chapter-nav { padding: 6px 14px; }
+  .archive-window .review-chapter-nav button { padding: 7px 12px; }
+}
+/* 小屏保留原图顶部轮廓，延展牛皮纸纹理；正文随内容自然增高。 */
+@media (max-width: 900px) {
+  .archive-folder::before { content: ''; position: absolute; z-index: -1; top: 12.5cqw; bottom: 6.4%; left: 7%; right: 10.3%; background: #bfa88d url('/decor/archive-kraft.svg'); }
+  .archive-envelope { height: auto; object-fit: contain; clip-path: inset(0 0 75% 0); }
+}
+@media (max-width: 600px) { .archive-folder { padding-top: 25%; } }
+
+/* 移除主标题后，保留移动端岗位标签原有位置。 */
+@media (max-width: 900px) { .archive-cover-heading { padding-top: 66px; } }

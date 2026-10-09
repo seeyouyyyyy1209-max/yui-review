@@ -1,0 +1,62 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 凭据与环境（例子文件应另行审核后手动加入）
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+.aws/
+.codex/
+.agents/
+.openai/
+
+# 本地文件、原始资料、备份与截图；网站实际图片仍保留在 public
+work/
+outputs/
+coverage/
+*.pdf
+*.psd
+*.ai
+*.sketch
+*.fig
+*.zip
+*.bak
+*.orig
+*.tmp
+截屏*.png
+
+# 仅供本机重建的脚本（含本机路径）及历史素材/来源记录
+/tools/build-core-assets.py
+/tools/build-proline-assets.py
+/public/images/core/
+/public/images/hero-collage.png
+/public/images/proline/feedback-*-redacted.png
+/public/**/asset-provenance.json
+/public/**/README.md
+/src/assets/hero.png

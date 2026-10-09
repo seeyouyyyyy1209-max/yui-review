@@ -1,0 +1,116 @@
+/* 首页专用样式；复现层级和比例，不引用参考站的图片或字体文件。 */
+.yui-home { color: #30312b; font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; }
+.yui-home button { font-family: inherit; }
+.home-skip { position: fixed; z-index: 30; top: -60px; left: 12px; padding: 10px 16px; color: #30241f; background: #fffaf0; }
+.home-skip:focus { top: 8px; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 5; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 4.2%; background: #30241fad; backdrop-filter: blur(14px); color: #eee9df; }
+.wordmark { color: inherit; text-decoration: none; font-family: Georgia, serif; font-style: italic; font-weight: bold; font-size: 28px; letter-spacing: -1.5px; }
+.wordmark span { color: #d6b394; }
+.main-nav { display: flex; gap: clamp(16px, 2.6vw, 40px); align-items: center; }
+.main-nav button { position: relative; color: #eee9df; border: 0; background: transparent; padding: 10px 0; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.main-nav button::after { content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: #c8ad91; transform: scaleX(0); transition: transform .2s; }
+.main-nav button:hover::after { transform: scaleX(1); }
+.nav-number { margin-right: 7px; font-size: 9px; color: #c8ad91; }
+.header-edition { display: inline-flex; gap: 5px; border: 1px solid #ffffff55; border-radius: 30px; padding: 7px 12px; font-size: 10px; letter-spacing: .5px; background: #ffffff10; }
+.menu-toggle { display: none; }
+.hero-desktop { position: relative; isolation: isolate; display: flex; flex-direction: column; height: 100svh; min-height: 660px; max-height: 1100px; padding: 112px 6% 30px; gap: 22px; overflow: hidden; background: #a58570; }
+.hero-patterns { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.hero-pattern-stripes, .hero-pattern-dots { position: absolute; inset: 0; }
+.hero-pattern-stripes { background-color: #f2eedb; background-image: repeating-linear-gradient(90deg, #f2eedb 0 3.1vw, #a88e77 3.1vw 6.2vw); }
+.hero-pattern-stripes::after, .hero-pattern-dots::after { content: ''; position: absolute; inset: 0; opacity: .22; background: url('/images/desktop-grain.svg') repeat; mix-blend-mode: soft-light; pointer-events: none; }
+.hero-pattern-dots { background-color: #302b21; background-image: url('/images/desktop-dots.svg'); background-size: 19.5vw 19.5vw; background-position: 4.65vw 0; transform: translateY(44.4%); animation: yui-paper-tide 10s ease-in-out infinite; }
+@keyframes yui-paper-tide {
+  0%, 100% { transform: translateY(44.4%); }
+  25% { transform: translateY(60%); }
+  75% { transform: translateY(40%); }
+}
+.pattern-paused .hero-pattern-dots { animation-play-state: paused; }
+.desktop-stage { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; width: 100%; }
+.personal-window { position: relative; z-index: 1; width: min(1080px, 100%, calc((100svh - 225px) * 1.85)); padding: 4px; border: 1px solid #979690; border-top-color: #e9e7df; border-left-color: #e9e7df; background: #c4c2bd; box-shadow: 0 22px 45px #24160f4d, 0 3px 8px #160e0a55, inset 1px 1px #f9f7f0, inset -1px -1px #53534e; }
+.personal-titlebar { height: 34px; display: flex; gap: 12px; align-items: center; padding: 0 8px 3px; background: linear-gradient(#e6e4de, #c4c1bb); border-bottom: 1px solid #8a8983; user-select: none; }
+.personal-window-label { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; height: 100%; }
+.window-grip { flex: 1; min-width: 8px; height: 17px; background: repeating-linear-gradient(0deg, #85847d70 0 1px, #f5f2e899 1px 2px, transparent 2px 4px); }
+.personal-filename { font-size: 11px; color: #343630; letter-spacing: .15px; white-space: nowrap; }
+.window-controls-static { display: flex; gap: 4px; pointer-events: none; flex-shrink: 0; }
+.window-controls-static span { width: 25px; height: 24px; display: grid; place-items: center; color: #292b26; font: 18px/1 Arial, sans-serif; border: 1px solid #807f78; background: linear-gradient(#f0eee8, #c0bdb6); box-shadow: inset 1px 1px #fffff7, inset -1px -1px #9a9890; }
+.personal-canvas { position: relative; display: grid; grid-template-columns: 46% 54%; border: 1px solid #797a73; border-top-color: #61645a; background: #eeeae8; isolation: isolate; overflow: hidden; }
+.personal-canvas::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 82% 10%, #fff8 0, transparent 65%), repeating-linear-gradient(0deg, #59483a03 0 1px, transparent 1px 4px), linear-gradient(90deg, #eeeae8 44%, #e9e1d8); pointer-events: none; }
+.personal-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 24px 0 22px 12%; min-width: 0; }
+.home-archive-label { font-size: 9px; color: #948b7d; letter-spacing: 2px; margin-bottom: 16px; }
+#hero-heading { margin: 0; line-height: .9; color: #282a25; }
+.hero-title-caption { display: block; font-family: 'Songti SC', 'SimSun', Georgia, serif; font-weight: normal; font-size: clamp(18px, 2.1vw, 27px); letter-spacing: 2px; line-height: 1.3; margin-bottom: 12px; }
+.hero-name { display: block; font-size: clamp(94px, 11.2vw, 162px); font-weight: 750; letter-spacing: -.085em; }
+.hero-period { color: inherit; }
+.home-subtitle { font-size: 8px; letter-spacing: .85px; margin: 20px 0 0; line-height: 1.8; color: #887d6f; }
+.personal-folders { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 372px; margin-top: 28px; align-items: start; }
+.personal-folder { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 5px 2px; min-width: 0; border: 0; background: transparent; cursor: pointer; color: #484b40; touch-action: manipulation; }
+.personal-folder svg { width: 49px; height: 40px; filter: drop-shadow(1px 2px 1px #62522c28); transition: transform .2s; }
+.personal-folder > span { font-size: 11px; line-height: 1.65; padding: 2px; text-align: center; min-height: 40px; }
+.personal-folder:hover svg { transform: translateY(-5px) rotate(-4deg); }
+.personal-folder:hover > span { background: #b9c3ae55; }
+.personal-folder.is-selected > span { background: #59483a; color: #fffaf0; }
+.personal-instructions { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.personal-instructions > span { color: #948b7d; font-size: 9px; }
+.personal-instructions button { font-size: 9px; padding: 4px 0; border: 0; border-bottom: 1px solid #b99a7b; color: #796350; background: transparent; cursor: pointer; }
+.personal-instructions button:disabled { opacity: .45; cursor: default; }
+.personal-role { display: flex; gap: 14px; color: #948b7d; font-size: 9px; margin-top: 20px; }
+.personal-portrait { margin: 0; position: relative; min-width: 0; width: 100%; aspect-ratio: 1; align-self: center; isolation: isolate; }
+.portrait-media { position: absolute; inset: 8%; overflow: hidden; }
+.portrait-media img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
+.portrait-animation-slot { position: absolute; inset: 0; pointer-events: none; }
+.personal-portrait figcaption { position: absolute; bottom: 17px; right: 24px; left: 20px; text-align: right; font-size: 9px; color: #887d6f; }
+.desktop-caption { display: flex; justify-content: space-between; gap: 12px; width: min(1080px, 100%); margin: 0 auto; color: #eadacc; font-size: 10px; letter-spacing: 1px; line-height: 1.7; }
+.yui-home :is(button,a):focus-visible { outline: 2px solid #a78160; outline-offset: 4px; }
+@media (min-width: 1650px) { .hero-name { font-size: 170px; } }
+@media (min-width: 901px) and (max-width: 1100px) { .personal-copy { padding-left: 9%; } .personal-folders { gap: 6px; margin-top: 28px; } .personal-folder > span { font-size: 10px; } .home-archive-label { margin-bottom: 15px; } .personal-role { margin-top: 20px; } }
+@media (max-width: 900px) {
+  .site-header { padding: 0 18px; }
+  .menu-toggle { display: block; margin-left: auto; margin-right: 14px; width: 40px; height: 40px; border: 0; background: transparent; color: #eee9df; font-size: 24px; cursor: pointer; }
+  .main-nav { display: none; position: absolute; top: 56px; left: 0; right: 0; padding: 16px 22px; background: #3e3029f5; flex-direction: column; align-items: stretch; gap: 4px; }
+  .main-nav.is-open { display: flex; }
+  .main-nav button { min-height: 44px; text-align: left; font-size: 15px; padding: 10px 12px; }
+  .main-nav button::after { content: none; }
+  .hero-desktop { height: auto; min-height: 100svh; max-height: none; padding: 84px 16px 24px; gap: 20px; }
+  .desktop-stage { display: block; }
+  .personal-window { width: 100%; max-width: 540px; margin: 0 auto; padding: 3px; }
+  .personal-titlebar { padding-inline: 6px; }
+  .personal-window-label { gap: 8px; }
+  .personal-filename { font-size: 9px; }
+  .personal-canvas { display: flex; flex-direction: column; }
+  .personal-copy { width: 100%; padding: 25px 7% 12px; }
+  .home-archive-label { margin-bottom: 16px; }
+  .hero-title-caption { font-size: 20px; letter-spacing: 1px; margin-bottom: 10px; }
+  .hero-name { font-size: clamp(85px, 24vw, 130px); }
+  .home-subtitle { margin-top: 16px; }
+  .personal-folders { margin-top: 24px; gap: 5px; max-width: none; }
+  .personal-folder svg { width: 37px; height: auto; }
+  .personal-folder > span { font-size: 10px; }
+  .personal-instructions { margin-top: 12px; gap: 12px; }
+  .personal-role { margin-top: 16px; }
+  .personal-portrait { align-self: center; width: 100%; max-width: 500px; aspect-ratio: 1.08; }
+  .personal-portrait figcaption { bottom: 12px; text-align: center; right: 12px; left: 12px; font-size: 8px; }
+  .desktop-caption { max-width: 540px; font-size: 8px; flex-wrap: wrap; }
+}
+@media (max-height: 650px) and (min-width: 901px) { .hero-desktop { height: auto; min-height: 660px; } .personal-window { width: min(880px, 100%); } }
+@media (prefers-reduced-motion: reduce) { .hero-pattern-dots { animation: none; transform: translateY(44.4%); } .personal-folder svg, .main-nav button::after { transition: none; } .personal-folder:hover svg { transform: none; } }
+
+/* 本人人物拼贴：每张停留1秒，2秒一个循环。叠放可避免切换引起布局变化。 */
+.portrait-loop .portrait-frame { position: absolute; inset: 0; }
+.portrait-loop .portrait-frame-second { visibility: hidden; }
+.portrait-loop[data-playback="playing"] .portrait-frame-second { animation: portrait-frame-switch 2s steps(1, end) infinite; }
+@keyframes portrait-frame-switch {
+  0%, 100% { visibility: hidden; }
+  50% { visibility: visible; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-loop[data-playback="playing"] .portrait-frame-second { animation: none; visibility: hidden; }
+}
+/* 同步隐藏另一帧，透明轮廓处也不会叠出两张脸。 */
+.portrait-loop[data-playback="playing"] .portrait-frame-first { animation: portrait-first-frame-switch 2s steps(1, end) infinite; }
+@keyframes portrait-first-frame-switch {
+  0%, 100% { visibility: visible; }
+  50% { visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-loop[data-playback="playing"] .portrait-frame-first { animation: none; visibility: visible; }
+}
