@@ -52,7 +52,7 @@ function ChapterWindow({ chapterIndex, onNavigate, onClose }) {
       <div className={`review-window ${chapterIndex === 0 ? 'archive-window' : ''}`} ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby={chapterIndex === 0 ? 'archive-window-title' : 'chapter-title'} onKeyDown={handleKeyDown} onClick={event => event.stopPropagation()}>
         <header className="review-window-bar"><strong id={chapterIndex === 0 ? 'archive-window-title' : undefined}><span aria-hidden="true">▣</span> {chapter.number} · {chapter.title}</strong><button type="button" ref={closeRef} onClick={onClose} aria-label={`关闭${chapter.title}`}>×</button></header>
         <div className="review-window-content" ref={contentRef}>
-          {chapterIndex !== 0 && <header className="review-chapter-heading"><span className="review-eyebrow">CHAPTER {chapter.number} / {chapter.subtitle}</span><h2 id="chapter-title">{chapter.title}</h2>{chapter.id !== 'cases' && <p>{chapter.summary}</p>}</header>}
+          {chapterIndex !== 0 && <header className="review-chapter-heading"><span className="review-eyebrow">CHAPTER {chapter.number} / {chapter.subtitle}</span><h2 id="chapter-title">{chapter.title}</h2>{chapter.id !== 'cases' && chapter.id !== 'plan' && <p>{chapter.summary}</p>}</header>}
           <ReviewChapters key={chapter.id} chapterId={chapter.id} onContinue={() => onNavigate(1)} />
         </div>
         <nav className="review-chapter-nav" aria-label="章节导航">

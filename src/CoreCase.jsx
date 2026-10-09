@@ -52,7 +52,7 @@ export default function CoreCase() {
   const sourceRef = useRef(null)
   const lot = coreAssets.find(item => item.group === 'lot')
   return <article className="derma-case core-case" ref={sourceRef}>
-    <header className="derma-heading"><small>项目 03 / IRONMAN CORE+</small><h3>海飞丝 Ironman Core+｜新品视觉升级</h3><p className="derma-claim">从功能认知，到高端头皮护理体验。</p><span className="core-status">阶段性设计成果</span></header>
+    <header className="derma-heading"><small>项目 03 / IRONMAN CORE+</small><h3>海飞丝 Ironman Core+｜新品视觉升级</h3></header>
     <div className="derma-intro"><section><h4>项目背景与目标</h4><p>围绕海飞丝 Core+ 新品升级，以OC Shampoo（控油洗发水）与LOT（头皮精华）为首轮重点，探索从传统去屑功能表达向高端头皮护理的视觉升级。</p><p>在强化科学功效的同时，建立更具美妆质感、品牌辨识度与系列延展性的视觉语言。</p></section><section><h4>核心挑战</h4><p>项目周期紧凑，涉及复杂的产品功效、双产品差异化及多模块电商内容，需要在美感与科学可信度之间寻找平衡，并在有限时间内推进创意探索与视觉优化。</p></section></div>
     <section className="derma-strategy"><h4>创意策略</h4><h5>高端美感 × 科学可信度</h5><div className="derma-strategy-grid">
       <div><span>01</span><strong>感知升级</strong><p>通过纯净白调、透明材质与精致光影，建立高端头皮护理的视觉体验。</p></div>
