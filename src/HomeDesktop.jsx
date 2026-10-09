@@ -43,7 +43,7 @@ export default function HomeDesktop({ selectedFolder, onSelect, onOpen, windowOp
             <div className="personal-canvas">
               <div className="personal-copy">
                 <span className="home-archive-label">内部述职档案 / 2026</span>
-                <h1 id="hero-heading" aria-label="YUI · 试用期工作述职"><span className="hero-title-caption">试用期工作述职</span><span className="hero-name">YUI<span className="hero-period">.</span></span></h1>
+                <h1 id="hero-heading" aria-label="YUI · 转正述职报告"><span className="hero-title-caption">转正述职报告</span><span className="hero-name">YUI<span className="hero-period">.</span></span></h1>
                 <p className="home-subtitle">2026 / ART DIRECTION / WORK REVIEW</p>
                 <nav className="personal-folders" aria-label="打开述职章节文件夹">
                   {chapters.map((chapter, index) => <button type="button" className={`personal-folder ${selectedFolder === index ? 'is-selected' : ''}`} key={chapter.id} aria-label={`${chapter.number} ${chapter.title}`} aria-pressed={selectedFolder === index} title="单击选中，双击打开；按回车打开" onClick={event => { event.stopPropagation(); onSelect(index) }} onDoubleClick={event => { event.stopPropagation(); onOpen(index) }} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); onOpen(index) } }}>

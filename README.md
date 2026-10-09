@@ -71,3 +71,7 @@ git push -u origin main
 官方说明：
 - https://vite.dev/guide/static-deploy.html#github-pages
 - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+## 图片加载优化
+
+页面预览使用public/images/optimized中的WebP副本，点击放大仍使用原始作品文件。修改原图后可用安装了Pillow的Python运行tools/optimize-images.py重新生成预览和src/optimizedImages.js映射，然后重新构建。两帧人物仍按一秒切换；非当前作品不提前下载高清原图。

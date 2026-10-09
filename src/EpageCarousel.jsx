@@ -1,4 +1,5 @@
 import { assetUrl } from './assetUrl'
+import { optimizedImages } from './optimizedImages'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -10,12 +11,17 @@ const dermaPages = [
   { name: '喷雾', src: '/images/derma/spray.jpg', width: 1000, height: 19808 },
 ]
 
-export function WorkImage({ page }) {
+export function WorkImage({ page, fullResolution = false }) {
+  const src = fullResolution ? page.src : (optimizedImages[page.src] || page.src)
+  return <LoadedWorkImage key={src} page={page} src={src} fullResolution={fullResolution} />
+}
+
+function LoadedWorkImage({ page, src, fullResolution }) {
   const [status, setStatus] = useState('loading')
   const [attempt, setAttempt] = useState(0)
   return <>
     {status === 'loading' && <span className="epage-status" role="status">作品加载中…</span>}
-    {status === 'error' ? <span className="epage-error" role="alert">图片暂时无法加载，请检查素材文件。<button type="button" onClick={event => { event.stopPropagation(); setStatus('loading'); setAttempt(attempt + 1) }}>重新加载</button></span> : <img key={attempt} src={assetUrl(page.src)} width={page.width} height={page.height} alt={page.alt || `${page.name}完整电商详情页`} decoding="async" draggable="false" onLoad={async event => { try { await event.currentTarget.decode(); setStatus('ready') } catch { setStatus('error') } }} onError={() => setStatus('error')} style={{ visibility: status === 'ready' ? 'visible' : 'hidden' }} />}
+    {status === 'error' ? <span className="epage-error" role="alert">图片暂时无法加载，请检查素材文件。<button type="button" onClick={event => { event.stopPropagation(); setStatus('loading'); setAttempt(attempt + 1) }}>重新加载</button></span> : <img key={attempt} src={assetUrl(src)} loading={fullResolution ? "eager" : "lazy"} width={page.width} height={page.height} alt={page.alt || `${page.name}完整电商详情页`} decoding="async" draggable="false" onLoad={async event => { try { await event.currentTarget.decode(); setStatus('ready') } catch { setStatus('error') } }} onError={() => setStatus('error')} style={{ visibility: status === 'ready' ? 'visible' : 'hidden' }} />}
   </>
 }
 
@@ -42,7 +48,7 @@ export function Preview({ page, onClose, sourceRef }) {
   return createPortal(<div className="epage-preview-overlay" onClick={event => { event.stopPropagation(); onClose() }}>
     <section className="epage-preview" role="dialog" aria-modal="true" aria-labelledby="epage-preview-title" ref={dialogRef} onClick={event => event.stopPropagation()} onKeyDown={handleKeyDown}>
       <header><strong id="epage-preview-title">{page.name}｜完整作品预览</strong><button type="button" ref={closeRef} onClick={onClose} aria-label="关闭作品预览">×</button></header>
-      <div className="epage-preview-scroll" tabIndex="0" aria-label="完整长图，向下滚动查看细节"><WorkImage page={page} /></div>
+      <div className="epage-preview-scroll" tabIndex="0" aria-label="完整长图，向下滚动查看细节"><WorkImage page={page} fullResolution /></div>
     </section>
   </div>, document.body)
 }
